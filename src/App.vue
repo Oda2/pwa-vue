@@ -1,28 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <div v-if="!$route.meta.public">
+      <MainLayout />
+    </div>
+    <div v-else>
+      <EmptyLayout />
+    </div>
+
+    <Snackbar />
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MainLayout from '@/components/layout/MainLayout';
+import EmptyLayout from '@/components/layout/EmptyLayout';
+import Snackbar from '@/components/layout/Snackbar';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    HelloWorld
+    MainLayout,
+    EmptyLayout,
+    Snackbar,
+  },
+  data () {
+    return {
+      //
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
